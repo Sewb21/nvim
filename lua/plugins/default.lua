@@ -27,9 +27,8 @@ return {
     opts = { use_diagnostic_signs = true },
   },
 
-  -- disable trouble
-  { "folke/trouble.nvim", enabled = false },
-
+  -- -- disable trouble
+  -- { "folke/trouble.nvim", enabled = false },
   -- override nvim-cmp and add cmp-emoji
   {
     "hrsh7th/nvim-cmp",
@@ -95,6 +94,22 @@ return {
       servers = {
         -- tsserver will be automatically installed with mason and loaded with lspconfig
         tsserver = {},
+        ruby_lsp = {
+          enabled = lsp == "ruby_lsp",
+        },
+        solargraph = {
+          enabled = lsp == "solargraph",
+        },
+        rubocop = {
+          -- If Solargraph and Rubocop are both enabled as an LSP,
+          -- diagnostics will be duplicated because Solargraph
+          -- already calls Rubocop if it is installed
+          enabled = formatter == "rubocop" and lsp ~= "solargraph",
+        },
+        standardrb = {
+          enabled = formatter == "standardrb",
+        },
+        {},
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
@@ -127,9 +142,9 @@ return {
         "lua",
         "markdown",
         "markdown_inline",
-        "python",
         "query",
         "regex",
+        "ruby",
         "tsx",
         "typescript",
         "vim",
@@ -180,13 +195,15 @@ return {
 
   -- add any tools you want to have installed below
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = {
       ensure_installed = {
         "stylua",
         "shellcheck",
         "shfmt",
         "flake8",
+        "erb-formatter",
+        "erb-lint",
       },
     },
   },
