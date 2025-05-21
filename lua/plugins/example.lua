@@ -92,17 +92,19 @@ return {
     opts = {
       ---@type lspconfig.options
       servers = {
+        ruby_lsp = {
+          -- cmd = { "bundle", "exec", "ruby-lsp" },
+          -- init_options = {
+          --   formatter = "auto",
+          -- },
+        },
+        rubocop = {
+          -- See: https://docs.rubocop.org/rubocop/usage/lsp.html
+          cmd = { "bundle", "exec", "rubocop", "--lsp" },
+          root_dir = lspconfig.util.root_pattern("Gemfile", ".git", "."),
+        },
         -- tsserver will be automatically installed with mason and loaded with lspconfig
         tsserver = {},
-        ruby_lsp = {
-          enabled = lsp == "ruby_lsp",
-        },
-        solargraph = {
-          enabled = lsp == "solargraph",
-        },
-        standardrb = {
-          enabled = formatter == "standardrb",
-        },
         {},
       },
       -- you can do any additional lsp server setup here
@@ -196,8 +198,6 @@ return {
         "shellcheck",
         "shfmt",
         "flake8",
-        "erb-formatter",
-        "erb-lint",
       },
     },
   },
