@@ -41,4 +41,5 @@ if vim.g.vscode then
   map("<leader>ca", "editor.action.quickFix", "Code Action")
   map("<leader>cf", "editor.action.formatDocument", "Format Document")
   map("<leader>cr", "editor.action.rename", "Rename Symbol")
+  map("<leader>sg", "workbench.action.findInFiles", "Grep in Files")
 end
