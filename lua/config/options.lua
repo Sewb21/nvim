@@ -3,6 +3,10 @@
 -- Add any additional options here
 vim.g.lazyvim_ruby_lsp = "ruby_lsp"
 vim.g.lazyvim_prettier_needs_config = true
+
+if vim.g.vscode then
+  vim.opt.report = 999999
+end
 vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
