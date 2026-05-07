@@ -7,3 +7,8 @@ vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
+
+if vim.g.vscode then
+  -- Keep multiline Neovim messages from forcing VS Code's Output panel open.
+  vim.o.cmdheight = 4
+end
