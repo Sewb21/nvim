@@ -1,5 +1,8 @@
 return {
   "ibhagwan/fzf-lua",
+  cond = function()
+    return not vim.g.vscode
+  end,
   opts = function(_, opts)
     local actions = require("fzf-lua.actions")
     opts.files = opts.files or {}

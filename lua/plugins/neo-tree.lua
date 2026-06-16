@@ -1,6 +1,9 @@
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
+    cond = function()
+      return not vim.g.vscode
+    end,
     opts = {
       filesystem = {
         window = {

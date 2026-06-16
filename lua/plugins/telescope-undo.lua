@@ -1,5 +1,8 @@
 return {
   "debugloop/telescope-undo.nvim",
+  cond = function()
+    return not vim.g.vscode
+  end,
   dependencies = { -- note how they're inverted to above example
     {
       "nvim-telescope/telescope.nvim",
